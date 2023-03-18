@@ -21,21 +21,26 @@
         </Grid.ColumnDefinitions>
 
         <!--argument row-->
-        <TextBlock Text="Y = " HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBlock Text="Y = " HorizontalAlignment="Right" VerticalAlignment="Center"/>
         <TextBox x:Name="GraphFunctionBox" Grid.Column="1" Margin="5" Background="LightGray" MaxHeight="20"/>
 
-        <TextBlock Text="Width and Height: " Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right"/>
-        <TextBox x:Name="GraphWidthBox" HorizontalContentAlignment="Center" Grid.Column="3" Margin="5"  Background="LightGray" MaxWidth="50" MaxHeight="20"/>
-        <TextBox x:Name="GraphHeightBox" HorizontalContentAlignment="Center" Grid.Column="4" Margin="5"  Background="LightGray" MaxWidth="50" MaxHeight="20"/>
+        <TextBlock Text="Graph Size: " Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+        <TextBox x:Name="GraphSizeBox" HorizontalContentAlignment="Center" Grid.Column="3" Margin="5"  Background="LightGray" MaxWidth="50" MaxHeight="20"/>
 
+        <!--Graph-->
         <Grid Grid.Row="1" Grid.ColumnSpan="5">
             <Canvas x:Name="GraphCanvas" Grid.ColumnSpan="2" Grid.RowSpan="2">
                 
             </Canvas>
-
+            
             <Border BorderBrush="Black" BorderThickness="2"  Grid.RowSpan="2" Grid.Column="1" Opacity="0.5"/>
             <Border BorderBrush="Black" BorderThickness="2" Grid.Column="1" Grid.RowSpan="1" Grid.ColumnSpan="2" Opacity="0.5"/>
             <Border BorderBrush="Black" Grid.Column="1" BorderThickness="2" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
+
+            <TextBlock x:Name="PosXGraphSize" Text="?" Grid.Column="2" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0 0 5 0"/>
+            <TextBlock x:Name="NegXGraphSize" Text="?" Grid.Column="1" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="5 0"/>
+            <TextBlock x:Name="PosYGraphSize" Text="?" Grid.Column="2" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5 5"/>
+            <TextBlock x:Name="NegYGraphSize" Text="?" Grid.Column="2" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="5 5"/>
 
             <Grid.RowDefinitions>
                 <RowDefinition/>
