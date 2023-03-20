@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GraphVisual"
         mc:Ignorable="d"
+        SizeChanged="Window_SizeChanged"
         Title="GraphVisual" Height="450" Width="800">
     <Grid>
         <Grid.RowDefinitions>
@@ -29,7 +30,7 @@
 
         <!--Graph-->
         <Grid Grid.Row="1" Grid.ColumnSpan="5">
-            <Canvas x:Name="GraphCanvas" Grid.ColumnSpan="2" Grid.RowSpan="2">
+            <Canvas x:Name="GraphCanvas"  Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="2">
                 
             </Canvas>
             

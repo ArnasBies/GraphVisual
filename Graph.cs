@@ -24,16 +24,23 @@ namespace GraphVisual
         }
 
         //methods
-        public void SetNewFunction(string expression)
+        public bool SetNewFunction(string expression)
         {
             NCalc.Expression exp;
 
             exp = new NCalc.Expression(expression);
 
-            if(!exp.HasErrors())
-            Function = exp;
+            if (!exp.HasErrors())
+            {
+                Function = exp;
+                return true;
+            }
 
-            else Function = new("0");
+            else
+            {
+                Function = new("0");
+                return false;
+            }
         }
 
         public double GetEvaluation(double x)
@@ -41,8 +48,10 @@ namespace GraphVisual
             Function.Parameters["x"] = x;
             Function.Parameters["X"] = x;
 
+            
 
-            return (double)Function.Evaluate();
+            return System.Convert.ToDouble(Function.Evaluate());
+
         }
     }
 }
