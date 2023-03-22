@@ -48,8 +48,6 @@ namespace GraphVisual
             Function.Parameters["x"] = x;
             Function.Parameters["X"] = x;
 
-            
-
             return System.Convert.ToDouble(Function.Evaluate());
 
         }

@@ -6,13 +6,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Ink;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace GraphVisual
@@ -33,21 +26,6 @@ namespace GraphVisual
 
             GraphSizeBox.TextChanged += ProcessNewSize;
             GraphFunctionBox.TextChanged += DrawGraph;
-
-            SolidColorBrush mainBrush = new SolidColorBrush();
-            mainBrush.Color = Colors.AliceBlue;
-            mainBrush.Opacity = 0.9;
-
-            Line line = new Line();
-            line.Stroke = mainBrush;
-            line.StrokeThickness = 2;
-
-            line.X1 = 0;
-            line.Y1 = 0;
-            line.X2 = 50;
-            line.Y2 = 50;
-
-            GraphCanvas.Children.Add(line);
         }
 
         //Event Handlers
@@ -101,7 +79,7 @@ namespace GraphVisual
 
             double y1, y2;
             double lineX, 
-                xx = 0, 
+                xPixelCoord = 0, 
                 additive = (halfSize * 2) / 200,
                 relativeAdditive = Math.Round(GraphCanvas.ActualWidth) / 200;
             Debug.WriteLine($"{additive}: additive, {relativeAdditive}: relative additive, {GraphCanvas.ActualWidth}: graph canvas width ");
@@ -125,8 +103,8 @@ namespace GraphVisual
                     return;
                 }
 
-                line.X1 = xx;
-                line.X2 = xx + relativeAdditive;
+                line.X1 = xPixelCoord;
+                line.X2 = xPixelCoord + relativeAdditive;
 
                 line.Y1 = (Math.Round(GraphCanvas.ActualHeight)/2) - (Math.Round(GraphCanvas.ActualHeight) / (halfSize * 2) * MainGraph.GetEvaluation(x));
                 line.Y2 = (Math.Round(GraphCanvas.ActualHeight)/2) - (Math.Round(GraphCanvas.ActualHeight) / (halfSize * 2) * MainGraph.GetEvaluation(x + additive));
@@ -138,7 +116,7 @@ namespace GraphVisual
                 if (y2 > halfSize) line.Y2 = 1;
                 else if (y2 < halfSize * -1) line.Y2 = GraphCanvas.ActualHeight;
 
-                xx += relativeAdditive;
+                xPixelCoord += relativeAdditive;
                 GraphCanvas.Children.Add(line);
             }
         }
